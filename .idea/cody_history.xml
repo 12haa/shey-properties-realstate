@@ -7,6 +7,69 @@
           <accountId value="VXNlcjoxNzAzNDM=" />
           <internalId value="6f21f25d-2eae-4f46-badd-5c847540f788" />
         </chat>
+        <chat>
+          <accountId value="VXNlcjoxNzAzNDM=" />
+          <internalId value="c56f511a-2762-4d06-85c3-c9cd06d641ca" />
+          <messages>
+            <list>
+              <message>
+                <speaker value="HUMAN" />
+                <text value="how to connect to mongodb atlas using compass" />
+              </message>
+              <message>
+                <speaker value="ASSISTANT" />
+                <text value=" Here are the steps to connect to MongoDB Atlas using Compass:&#10;&#10;1. Sign in to your MongoDB Atlas account and go to the Clusters page. &#10;&#10;2. Click on the &quot;Connect&quot; button for the cluster you want to connect to.&#10;&#10;3. Select &quot;Connect with MongoDB Compass&quot; from the connection options.&#10;&#10;4. Copy the connection string provided. It should look something like:&#10;&#10;```&#10;mongodb+srv://&lt;username&gt;:&lt;password&gt;@cluster0.mongodb.net/test&#10;```&#10;&#10;5. Open MongoDB Compass on your local machine.&#10;&#10;6. Click on the &quot;New Connection&quot; button.&#10;&#10;7. Paste the connection string you copied earlier into the URI field.&#10;&#10;8. Fill in your MongoDB Atlas username and password.&#10;&#10;9. Click on &quot;Connect&quot; to connect Compass to your Atlas cluster.&#10;&#10;10. Once connected, you should see the databases and collections in your Atlas cluster loaded in Compass.&#10;&#10;That's it! Compass is now connected to your remote MongoDB Atlas database. You can use Compass to browse data, run queries, insert documents etc. Make sure to have the necessary permissions for the operations you want to perform." />
+              </message>
+            </list>
+          </messages>
+          <updatedAt value="2024-02-29T13:39:10.1240774" />
+        </chat>
+        <chat>
+          <accountId value="VXNlcjoxNzAzNDM=" />
+          <internalId value="c64ebf6e-1331-48e7-99d3-e0771acf1705" />
+        </chat>
+        <chat>
+          <accountId value="VXNlcjoxNzAzNDM=" />
+          <internalId value="07031301-d5c0-484a-aa19-d66d745ecddb" />
+        </chat>
+        <chat>
+          <accountId value="VXNlcjoxNzAzNDM=" />
+          <internalId value="a3d99065-b044-41f4-b216-a89fe78c7558" />
+          <messages>
+            <list>
+              <message>
+                <speaker value="HUMAN" />
+                <text value="const isPublicRoute = [&amp;quot;/sign-in&amp;quot;, &amp;quot;/sign-up&amp;quot;].includes(&#10;    pathname.split(&amp;quot;/&amp;quot;)[1],&#10;  ); explaint the code" />
+              </message>
+              <message>
+                <speaker value="ASSISTANT" />
+                <text value=" This is a constant variable declaration that checks if the current route is a public route or not.&#10;&#10;It works like this:&#10;&#10;1. isPublicRoute is declared as a constant.&#10;&#10;2. An array of public routes is defined, containing &quot;/sign-in&quot; and &quot;/sign-up&quot;. &#10;&#10;3. pathname is assumed to be the current route path, like &quot;/app&quot; or &quot;/sign-up&quot;.&#10;&#10;4. pathname is split into an array on the &quot;/&quot; character, so &quot;/sign-up&quot; becomes [&quot;sign-up&quot;].&#10;&#10;5. The second element of that array (index 1) contains the route name, like &quot;sign-up&quot;. &#10;&#10;6. The .includes() method checks if that route name exists in the array of public routes.&#10;&#10;7. If so, isPublicRoute will be true, indicating this is a public route.&#10;&#10;8. If not, isPublicRoute will be false, indicating this is a private route.&#10;&#10;So in summary, it checks the current route name against a hardcoded list of public routes to determine if the route is public or private." />
+              </message>
+            </list>
+          </messages>
+          <updatedAt value="2024-03-01T10:50:34.4655154" />
+        </chat>
+        <chat>
+          <accountId value="VXNlcjoxNzAzNDM=" />
+          <internalId value="1e88f878-e91a-41ff-ab48-a1b5c49d5a46" />
+          <messages>
+            <list>
+              <message>
+                <speaker value="HUMAN" />
+                <text value="how to disable extention in webstorm" />
+              </message>
+              <message>
+                <speaker value="ASSISTANT" />
+                <text value=" Here are a few ways to disable extensions in WebStorm:&#10;&#10;- From the main menu, go to File &gt; Settings &gt; Plugins. This will open the Plugins settings screen. Find the extension you want to disable and uncheck the checkbox next to it. This will disable the extension.&#10;&#10;- You can also disable extensions from the editor. Open a file in the editor, then go to View &gt; Tool Windows &gt; Enabled Plugins. This will show a list of enabled extensions. Uncheck the box next to any extension you want to disable.&#10;&#10;- To temporarily disable all extensions, click the &quot;Power Save Mode&quot; button in the bottom right corner of the WebStorm window. This will disable all extensions to reduce memory usage. Click it again to re-enable the extensions.&#10;&#10;- You can also disable extensions by renaming the extension's folder under the plugins directory. For example on Windows it would be `&lt;WebStormFolder&gt;/plugins/&lt;extensionName&gt;`. Add &quot;.disabled&quot; to the end of the extension folder name to disable it.&#10;&#10;- Some extensions can be disabled directly from their own settings. Go to File &gt; Settings &gt; Plugins and click on the extension. Some extensions will have a toggle to enable/disable them.&#10;&#10;So in summary, the main ways are to use the Plugins settings, Power Save Mode, or rename the extension's folder to disable extensions in WebStorm." />
+              </message>
+            </list>
+          </messages>
+          <updatedAt value="2024-03-02T20:19:17.6167909" />
+        </chat>
+        <chat>
+          <accountId value="VXNlcjoxNzAzNDM=" />
+          <internalId value="7d8dc5d9-20fa-4d87-9a11-2764189fcf64" />
+        </chat>
       </list>
     </chats>
   </component>
