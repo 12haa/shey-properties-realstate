@@ -9,38 +9,51 @@ import Contact from "@/app/(private)/user/properties/_components/properties-form
 
 export interface PropertiesFormStepProps {
   currentStep: number;
-  setCurrentStep: (step: number) => void;
+  setCurrentStep: (currentStep: number) => void;
+  finalValues: any;
+  setFinalValues: (finalValues: any) => void;
 }
 const PropertiesForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
-
-  const commonPropsForSteps = {};
+  const [finalValues, setFinalValues] = useState({
+    basic: {},
+    location: {},
+    amenities: {},
+    media: {},
+    contact: {},
+  });
+  const commonPropsForSteps = {
+    currentStep,
+    setCurrentStep,
+    finalValues,
+    setFinalValues,
+  };
   const steps = [
     {
       title: "Basic",
-      content: <Basic />,
+      content: <Basic {...commonPropsForSteps} />,
     },
     {
       title: "Location",
-      content: <Location />,
+      content: <Location {...commonPropsForSteps} />,
     },
     {
       title: "Amenities",
-      content: <Amenities />,
+      content: <Amenities {...commonPropsForSteps} />,
     },
     {
       title: "Media",
-      content: <Media />,
+      content: <Media {...commonPropsForSteps} />,
     },
     {
       title: "Contact",
-      content: <Contact />,
+      content: <Contact {...commonPropsForSteps} />,
     },
   ];
   return (
     <div>
       <Steps items={steps} current={currentStep} />
-      <div className="mt-8 ">{steps[currentStep].content}</div>
+      <div className="mt-8 ">{steps[currentStep].content} </div>
     </div>
   );
 };
