@@ -1,7 +1,7 @@
 import React from "react";
 import { PropertiesFormStepProps } from "@/app/(private)/user/properties/_components/properties-form/page";
-import { Button, Form, Input, Select } from "antd";
-import { propertyTypes } from "@/constants";
+import { Button, Form, Input, InputNumber, Select } from "antd";
+import { propertyStatus, propertyTypes } from "@/constants";
 
 const Basic = ({
   currentStep,
@@ -11,12 +11,15 @@ const Basic = ({
 }: PropertiesFormStepProps) => {
   const onFinish = (values: any) => {
     setFinalValues({ ...finalValues, basic: values });
+    setCurrentStep(currentStep + 1);
   };
-  setCurrentStep(currentStep + 1);
-
   return (
-    <Form layout="vertical" initialValues={finalValues.basic}>
-      <div className="grid lg:grid-cols-3 grid-cols-1 ">
+    <Form
+      layout="vertical"
+      initialValues={finalValues.basic}
+      onFinish={onFinish}
+    >
+      <div className="grid lg:grid-cols-3 grid-cols-1 gap-5 ">
         <Form.Item
           name="name"
           label="Property name"
@@ -51,8 +54,36 @@ const Basic = ({
         >
           <Select options={propertyTypes} />
         </Form.Item>
+        <Form.Item
+          name="Status"
+          label="status"
+          rules={[
+            {
+              required: true,
+              message: "Please select property status!",
+            },
+          ]}
+        >
+          <Select options={propertyStatus} />
+        </Form.Item>
+        <Form.Item
+          name="price"
+          label="Price"
+          rules={[
+            {
+              required: true,
+              message: "Please select property status!",
+            },
+          ]}
+        >
+          <InputNumber
+            className="w-full"
+            type="number"
+            placeholder="Property Price"
+          />
+        </Form.Item>
       </div>
-      <div className="flex justify-end gap-5">
+      <div className="flex justify-end gap-5 mt-7">
         <Button
           type="default"
           disabled={currentStep === 0}
@@ -60,7 +91,7 @@ const Basic = ({
         >
           Back
         </Button>
-        <Button type="primary" onClick={() => setCurrentStep(currentStep + 1)}>
+        <Button htmlType="submit" type="primary">
           Next
         </Button>
       </div>

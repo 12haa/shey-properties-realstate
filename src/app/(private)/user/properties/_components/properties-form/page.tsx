@@ -15,6 +15,7 @@ export interface PropertiesFormStepProps {
 }
 const PropertiesForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
+
   const [finalValues, setFinalValues] = useState({
     basic: {},
     location: {},
@@ -28,6 +29,7 @@ const PropertiesForm = () => {
     finalValues,
     setFinalValues,
   };
+
   const steps = [
     {
       title: "Basic",

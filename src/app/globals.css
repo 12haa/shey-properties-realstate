@@ -25,3 +25,9 @@ html, body
 .font-bold {
     font-weight: 700 !important;
 }
+input{
+    width: 100% !important;
+}
+.ant-form-item{
+    margin-bottom:5px !important;
+}

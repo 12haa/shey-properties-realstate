@@ -34,3 +34,11 @@ export const propertyStatus = [
     label: "Rent",
   },
 ];
+export const cities = [
+  "SHIRAZ",
+  "TEHRAN",
+  "MASHHAD",
+  "QOM",
+  "ISFAHAN",
+  "KERMAN",
+];
