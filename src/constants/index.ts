@@ -42,3 +42,71 @@ export const cities = [
   "ISFAHAN",
   "KERMAN",
 ];
+
+export const parkingTypes = [
+  {
+    value: "garage",
+    label: "Garage",
+  },
+
+  {
+    value: "street",
+    label: "Street",
+  },
+  {
+    value: "driveway",
+    label: "Driveway",
+  },
+  {
+    value: "others",
+    label: "Others",
+  },
+];
+export const furnishingTypes = [
+  {
+    value: "furnished",
+    label: "Furnished",
+  },
+  {
+    value: "semi-furnished",
+    label: "Semi-Furnished",
+  },
+  {
+    value: "unfurnished",
+    label: "Unfurnished",
+  },
+];
+export const facingTypes = [
+  {
+    value: "east",
+    label: "East",
+  },
+  {
+    value: "north-east",
+    label: "North-East",
+  },
+  {
+    value: "north-west",
+    label: "North-West",
+  },
+  {
+    value: "south-east",
+    label: "South-East",
+  },
+  {
+    value: "south-west",
+    label: "South-West",
+  },
+  {
+    value: "west",
+    label: "West",
+  },
+  {
+    value: "north",
+    label: "North",
+  },
+  {
+    value: "south",
+    label: "South",
+  },
+];
