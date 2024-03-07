@@ -1,6 +1,7 @@
 import React from "react";
 import { PropertiesFormStepProps } from "@/app/(private)/user/properties/_components/properties-form/page";
 import { Button, Form, Input, Select } from "antd";
+import { UploadFilesToFireBaseAndReturnURLs } from "@/helpers/upload-media";
 
 const Contact = ({
   currentStep,
@@ -8,10 +9,19 @@ const Contact = ({
   finalValues,
   setFinalValues,
 }: PropertiesFormStepProps) => {
-  const onFinish = (values: any) => {
-    const tempFinalValues = { ...finalValues, contact: values };
-
-    console.log(tempFinalValues);
+  const onFinish = async (values: any) => {
+    try {
+      const tempFinalValues = { ...finalValues, contact: values };
+      console.log(tempFinalValues, "im tempFinalValues");
+      const tempMedia = tempFinalValues.media;
+      tempMedia.images = await UploadFilesToFireBaseAndReturnURLs(
+        tempMedia.newlyUploadedFiles,
+      );
+      tempFinalValues.medaia = tempMedia;
+      console.log(tempFinalValues, "");
+    } catch (err: any) {
+      throw new Error(err.message);
+    }
   };
   return (
     <Form
@@ -88,7 +98,7 @@ const Contact = ({
         >
           Back
         </Button>
-        <Button type="primary" onClick={() => setCurrentStep(currentStep + 1)}>
+        <Button type="primary" htmlType="submit">
           Next
         </Button>
       </div>
