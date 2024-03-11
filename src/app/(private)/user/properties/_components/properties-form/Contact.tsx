@@ -37,7 +37,7 @@ const Contact = ({
       console.log(response, "im response");
       if (response.error) throw new Error(response.error);
       message.success("Property Added Successfully");
-      // router.push("/user/properties");
+      router.push("/user/properties");
     } catch (err: any) {
       throw new Error(err.message);
     }

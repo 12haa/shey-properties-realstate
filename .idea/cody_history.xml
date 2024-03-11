@@ -193,6 +193,19 @@
         <chat>
           <accountId value="VXNlcjoxNzAzNDM=" />
           <internalId value="ad953c23-b089-44aa-b35e-5ffe4e275b42" />
+          <messages>
+            <list>
+              <message>
+                <speaker value="HUMAN" />
+                <text value="how to set prettier as default formatter in webstorm " />
+              </message>
+              <message>
+                <speaker value="ASSISTANT" />
+                <text value=" Here are the steps to set Prettier as the default formatter in WebStorm:&#10;&#10;1. Open Settings/Preferences in WebStorm (Ctrl+Alt+S on Windows/Linux, Cmd+, on Mac)&#10;&#10;2. Go to Languages &amp; Frameworks &gt; JavaScript &gt; Prettier&#10;&#10;3. Check the &quot;On 'Reformat Code' action&quot; option &#10;&#10;4. Click on the Configuration file dropdown and select your Prettier config file (e.g. .prettierrc) if you have one, or leave it as Default&#10;&#10;5. Under &quot;On code reformat&quot; check the following options:&#10;  - Reformat file on save&#10;  - Reformat block on typing ; &#10;  - Reformat block on typing }&#10;&#10;6. Click Apply then OK.&#10;&#10;Now when you reformat code in WebStorm using Ctrl+Alt+L (Cmd+Alt+L on Mac), or when a file is saved, Prettier will be used to format the code instead of WebStorm's built-in formatter.&#10;&#10;You can also set Prettier as the default formatter for other languages like CSS, JSON etc. by going to their respective settings sections and configuring Prettier there as well." />
+              </message>
+            </list>
+          </messages>
+          <updatedAt value="2024-03-11T15:48:50.4874917" />
         </chat>
       </list>
     </chats>

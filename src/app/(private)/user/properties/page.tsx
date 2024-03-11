@@ -1,7 +1,9 @@
-import React from "react";
+import React, { Suspense } from "react";
 import PageTitle from "@/components/page-title";
 import PropertiesTable from "@/app/(private)/user/properties/_components/properties-table";
 import LinkButton from "@/components/link-button";
+import Filters from "@/components/Filters";
+import Loader from "@/components/Loader";
 
 const Properties = () => {
   return (
@@ -13,8 +15,16 @@ const Properties = () => {
           path="/user/properties/create-property"
         />
       </div>
-
-      <PropertiesTable />
+      <Filters />
+      <Suspense
+        fallback={
+          <div>
+            <Loader />
+          </div>
+        }
+      >
+        <PropertiesTable />
+      </Suspense>
     </div>
   );
 };
