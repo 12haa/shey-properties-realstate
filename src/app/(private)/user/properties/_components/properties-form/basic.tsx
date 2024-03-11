@@ -26,11 +26,11 @@ const Basic = ({
           rules={[{ required: true, message: "Please input property name!" }]}
           className="col-span-2 lg:col-span-2"
         >
-          <Input placeholder="Property Name" name="propertyName" />
+          <Input placeholder="Property Name" />
         </Form.Item>
         <Form.Item
-          name="description "
-          label="Description"
+          name="description"
+          label="description"
           rules={[
             {
               required: true,
@@ -39,7 +39,7 @@ const Basic = ({
           ]}
           className="col-span-1 lg:col-span-3"
         >
-          <Input.TextArea placeholder="Property Description" />
+          <Input placeholder="Property Description" />
         </Form.Item>
         <Form.Item
           name="type"
@@ -55,7 +55,7 @@ const Basic = ({
           <Select options={propertyTypes} />
         </Form.Item>
         <Form.Item
-          name="Status"
+          name="status"
           label="status"
           rules={[
             {

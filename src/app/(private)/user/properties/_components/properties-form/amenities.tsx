@@ -108,7 +108,7 @@ const Amenities = ({
             },
           ]}
         >
-          <InputNumber className="w-full " placeholder="Area" />
+          <Input className="w-full " placeholder="Area" />
         </Form.Item>
         <Form.Item
           name="facing"
@@ -120,7 +120,7 @@ const Amenities = ({
             },
           ]}
         >
-          <InputNumber className="w-full " placeholder="Bathrooms" />
+          <Input className="w-full " placeholder="Bathrooms" />
         </Form.Item>
         <Form.Item
           name="age"

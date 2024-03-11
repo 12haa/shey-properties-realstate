@@ -6,16 +6,21 @@ import Location from "@/app/(private)/user/properties/_components/properties-for
 import Amenities from "@/app/(private)/user/properties/_components/properties-form/amenities";
 import Media from "@/app/(private)/user/properties/_components/properties-form/Media";
 import Contact from "@/app/(private)/user/properties/_components/properties-form/Contact";
+import { useRouter } from "next/navigation";
 
 export interface PropertiesFormStepProps {
   currentStep: number;
   setCurrentStep: (currentStep: number) => void;
   finalValues: any;
   setFinalValues: (finalValues: any) => void;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
 }
+
 const PropertiesForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
-
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const [finalValues, setFinalValues] = useState({
     basic: {},
     location: {},
@@ -31,6 +36,8 @@ const PropertiesForm = () => {
     setCurrentStep,
     finalValues,
     setFinalValues,
+    setLoading,
+    loading,
   };
 
   const steps = [

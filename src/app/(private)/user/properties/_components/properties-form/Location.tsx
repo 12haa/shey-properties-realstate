@@ -22,7 +22,7 @@ const Location = ({
       <div className="grid grid-cols-1 lg:grid-cols-3">
         <div className="col-span-1">
           <Form.Item
-            label="City"
+            label="city"
             name="city"
             rules={[
               {
@@ -48,7 +48,7 @@ const Location = ({
         </div>
         <div className=" col-span1 lg:col-span-3">
           <Form.Item
-            label="Pincode"
+            label="pincode"
             name="pincode"
             rules={[
               {
@@ -61,21 +61,12 @@ const Location = ({
               className="w-full"
               placeholder="Pincode"
               value={finalValues.location?.pincode}
-              onChange={(e) =>
-                setFinalValues({
-                  ...finalValues,
-                  location: {
-                    ...finalValues.location,
-                    pincode: e,
-                  },
-                })
-              }
             />
           </Form.Item>
         </div>
         <div className="col-span1 lg:col-span-3">
           <Form.Item
-            label="Landmark"
+            label="landmark"
             name="landmark"
             rules={[
               {
@@ -101,7 +92,7 @@ const Location = ({
         </div>
         <div className="col-span-1 lg:col-span-3">
           <Form.Item
-            label="Address"
+            label="address"
             name="address"
             rules={[
               {
