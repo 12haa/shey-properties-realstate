@@ -236,9 +236,17 @@
                 <speaker value="ASSISTANT" />
                 <text value=" Here are a few ways to hide the top navigation bar in Zen mode in WebStorm:&#10;&#10;- Press Shift twice to toggle between Full Screen mode and Normal mode. In Full Screen mode, the top navigation bar is hidden.&#10;&#10;- Customize the Zen mode appearance - go to Preferences &gt; Appearance &amp; Behavior &gt; Appearance and click on the Zen Mode tab. Uncheck the &quot;Show tool window bars&quot; option to hide the top toolbar.&#10;&#10;- Use a plugin like Presentation Assistant to provide more control over hiding UI elements like the top toolbar in Zen mode. You can configure it to auto-hide the top toolbar.&#10;&#10;- Edit the Zen mode theme CSS to hide the top toolbar. The CSS files are located under [WebStorm config folder]/options/zenMode.css. Add this to hide the top toolbar:&#10;&#10;```css&#10;.toplevel-toolbar {&#10;  display: none !important;&#10;}&#10;```&#10;&#10;- Hide it using the View menu - click on View &gt; Appearance and uncheck the &quot;Tool Window Bars&quot; option. This will hide it in both normal and Zen modes.&#10;&#10;- Right-click on the top toolbar and select &quot;Hide Tool Window Bar&quot; to quickly toggle its visibility in Zen mode.&#10;&#10;So in summary, use Full Screen mode, customize the Zen appearance settings, edit the CSS, or use plugins like Presentation Assistant to auto-hide the top toolbar in Zen mode for a distraction-free editing experience." />
               </message>
+              <message>
+                <speaker value="HUMAN" />
+                <text value="how to uncollapse in webstorm" />
+              </message>
+              <message>
+                <speaker value="ASSISTANT" />
+                <text value=" Here are a few ways to uncollapse or expand collapsed code in WebStorm:&#10;&#10;- Click on the + icon next to the collapsed code block to expand it.&#10;&#10;- Place your cursor in the collapsed code block and press Ctrl + NumPad + to expand it.&#10;&#10;- Place your cursor in the collapsed code block and click the expand icon that appears on the gutter to the left of the line numbers.&#10;&#10;- Right-click on a collapsed code block and select &quot;Expand&quot; from the context menu.&#10;&#10;- Select the collapsed code block and use the keyboard shortcut Ctrl + Shift + + to expand it. &#10;&#10;- To expand all collapsed code blocks in a file, right-click in the editor and select &quot;Expand All&quot; or use the keyboard shortcut Ctrl + Shift + +.&#10;&#10;- To recursively expand a collapsed method/function along with all its child blocks, hold the Ctrl key and click on the + icon.&#10;&#10;- Install the Expand Selection plugin and use the shortcuts it provides like Ctrl+W to expand the current collapsed block.&#10;&#10;- From the menu bar, navigate to Code &gt; Expand All to fully expand all collapsed code in the open file.&#10;&#10;So in summary, clicking the + icons, using keyboard shortcuts like Ctrl + Shift + +, right-click context menu actions, and plugins like Expand Selection can help speed up expanding collapsed code blocks in WebStorm." />
+              </message>
             </list>
           </messages>
-          <updatedAt value="2024-03-12T16:08:02.0461389" />
+          <updatedAt value="2024-03-12T18:38:39.7628456" />
         </chat>
       </list>
     </chats>
