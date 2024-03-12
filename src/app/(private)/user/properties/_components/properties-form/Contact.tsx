@@ -19,11 +19,12 @@ const Contact = ({
     try {
       const tempFinalValues = { ...finalValues, contact: values };
 
+      // Handling Media Upload
       const tempMedia = tempFinalValues.media;
-
-      tempMedia.images = await UploadFilesToFireBaseAndReturnURLs(
+      const newImagesUrls = await UploadFilesToFireBaseAndReturnURLs(
         tempMedia.newlyUploadedFiles,
       );
+      tempMedia.images = [...tempMedia.images, ...newImagesUrls];
       tempFinalValues.medaia = tempMedia;
       const valuesAsPerDb = {
         ...tempFinalValues.basic,
