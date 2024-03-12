@@ -15,21 +15,28 @@ export interface PropertiesFormStepProps {
   setFinalValues: (finalValues: any) => void;
   loading: boolean;
   setLoading: (loading: boolean) => void;
+  isEdit: boolean;
 }
 
-const PropertiesForm = () => {
+const PropertiesForm = ({
+  isEdit = false,
+  initialValues,
+}: {
+  isEdit: boolean;
+  initialValues?: any;
+}) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [finalValues, setFinalValues] = useState({
-    basic: {},
-    location: {},
-    amenities: {},
+    basic: initialValues,
+    location: initialValues,
+    amenities: initialValues,
     media: {
       newlyUploadedFiles: [],
-      images: [],
+      images: initialValues?.images || [],
     },
-    contact: {},
+    contact: initialValues,
   });
   const commonPropsForSteps = {
     currentStep,
@@ -38,6 +45,7 @@ const PropertiesForm = () => {
     setFinalValues,
     setLoading,
     loading,
+    isEdit,
   };
 
   const steps = [

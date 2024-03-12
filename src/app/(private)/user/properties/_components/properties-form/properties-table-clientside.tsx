@@ -57,7 +57,7 @@ const ClientSidePropertiesTable = ({
             <Button
               size="small"
               onClick={() =>
-                router.push(`user//properties/edit-property/${record.id}`)
+                router.push(`properties/edit-property/${record.id}`)
               }
             >
               <i className="ri-pencil-line"></i>

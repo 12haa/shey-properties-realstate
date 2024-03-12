@@ -18,7 +18,11 @@ const Location = ({
   };
 
   return (
-    <Form layout="vertical" onFinish={onFinish}>
+    <Form
+      layout="vertical"
+      onFinish={onFinish}
+      initialValues={finalValues.location}
+    >
       <div className="grid grid-cols-1 lg:grid-cols-3">
         <div className="col-span-1">
           <Form.Item
