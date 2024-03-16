@@ -3,6 +3,7 @@ import { prisma } from "@/config/db";
 import { Property } from "@prisma/client";
 import LinkButton from "@/components/link-button";
 import { Carousel } from "antd";
+import QueryModal from "@/app/(private)/property/_components/query-modal";
 
 interface Props {
   params: {
@@ -59,6 +60,9 @@ const PropertyPage = async ({ params: { id } }: Props) => {
               </div>
             ))}
           </Carousel>
+          <h1 className="text-2xl font-bold text-gray-700 mt-7">
+            ${property.price} -- {property.status}
+          </h1>
           <p className="text-sm text-gray-600 mb-2">{property.description}</p>
         </div>
         {/*Property Info*/}
@@ -141,6 +145,8 @@ const PropertyPage = async ({ params: { id } }: Props) => {
             ) : (
               <p>Owner Has Chosen not to show their info.</p>
             )}
+
+            <QueryModal />
           </div>
         </div>
       </div>
