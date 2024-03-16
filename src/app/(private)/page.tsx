@@ -1,4 +1,3 @@
-import { currentUser, UserButton } from "@clerk/nextjs";
 import { GetCurrentUserFromMongoDb } from "@/actions/users";
 import { randomFillSync } from "node:crypto";
 import Filters from "@/components/Filters";
