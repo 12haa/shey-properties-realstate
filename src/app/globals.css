@@ -34,3 +34,11 @@ input {
   border: 1px solid #b5b5b5 !important;
   margin-top: 10px !important;
 }
+
+/* Property Main Image Hover Animation*/
+.property-main-image {
+  transition: all 0.5s ease-in-out;
+}
+.property-main-image:hover {
+  transform: scale(1.1);
+}
