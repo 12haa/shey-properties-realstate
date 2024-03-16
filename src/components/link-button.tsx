@@ -7,7 +7,11 @@ const LinkButton = ({ title, path }: { title: string; path: string }) => {
   const router = useRouter();
   return (
     // 使用Ant Design的Button组件
-    <Button type="default" onClick={() => router.push(path)}>
+    <Button
+      type="default"
+      onClick={() => router.push(path)}
+      className="rounded-md"
+    >
       {title}
     </Button>
   );
