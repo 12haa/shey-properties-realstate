@@ -15,6 +15,7 @@ const PropertyPage = async ({ params: { id } }: Props) => {
   const property: Property = (await prisma.property.findUnique({
     where: { id: id },
   })) as Property;
+  console.log(property, "Im Property from property id page");
 
   const getAttributesDetails = ({
     name,
@@ -117,7 +118,7 @@ const PropertyPage = async ({ params: { id } }: Props) => {
               value: property.landmark,
             })}
             {getAttributesDetails({
-              name: "Pincode",
+              name: "PinCode",
               value: property.pincode,
             })}
             {getAttributesDetails({
@@ -146,7 +147,7 @@ const PropertyPage = async ({ params: { id } }: Props) => {
               <p>Owner Has Chosen not to show their info.</p>
             )}
 
-            <QueryModal />
+            <QueryModal propertyId={property.id} />
           </div>
         </div>
       </div>

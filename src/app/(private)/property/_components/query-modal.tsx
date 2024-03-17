@@ -1,11 +1,28 @@
 "use client";
 import React, { useState } from "react";
-import { Button, Form, Input, InputNumber, Modal } from "antd";
+import { Button, Form, Input, InputNumber, message, Modal } from "antd";
+import { AddQuery } from "@/actions/queries";
 
 const QueryModal = ({ propertyId }: { propertyId: string }) => {
-  const onFinish = async (values: any) => {};
-
   const [showQueryModal, setShowQueryModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const onFinish = async (values: any) => {
+    try {
+      setLoading(true);
+      const response = await AddQuery({ ...values, propertyId });
+      if (response.error) {
+        throw new Error(response.error.message);
+      } else {
+        message.success("Query added successfully");
+        setShowQueryModal(false);
+      }
+    } catch (err: any) {
+      message.error(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="mt-7">
       <Button className="" block onClick={() => setShowQueryModal(true)}>
@@ -49,7 +66,7 @@ const QueryModal = ({ propertyId }: { propertyId: string }) => {
               name="qouteAmount"
               label="Qoute Amount"
             >
-              <Input />
+              <InputNumber className="w-full" />
             </Form.Item>
             <Form.Item
               rules={[
@@ -65,20 +82,20 @@ const QueryModal = ({ propertyId }: { propertyId: string }) => {
             </Form.Item>
             <Form.Item>
               <Form.Item
-                name="email"
-                label="Email"
+                name="phoneNumber"
+                label="Your Contact"
                 rules={[
                   {
                     required: true,
-                    message: "Please input your email",
+                    message: "Please input your Phone Number",
                   },
                 ]}
               >
-                <Input type="email" placeholder="Enter Your Email" />
+                <Input className="w-full" placeholder="Enter Your Email" />
               </Form.Item>
             </Form.Item>
             <div className="flex justify-end gap-2 rounded-md">
-              <Button className="mt-7" htmlType="submit">
+              <Button className="mt-7" htmlType="submit" loading={loading}>
                 Send
               </Button>
               <Button
@@ -86,6 +103,7 @@ const QueryModal = ({ propertyId }: { propertyId: string }) => {
                 className="mt-7"
                 htmlType="button"
                 onClick={() => setShowQueryModal(false)}
+                disabled={loading}
               >
                 Cancel
               </Button>

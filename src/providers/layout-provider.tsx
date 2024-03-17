@@ -106,7 +106,7 @@ const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
   useEffect(() => {
-    if (!isPublicRoute) getCurrentUser();
+    if (!isPublicRoute) getCurrentUser().then(() => console.log("done"));
   }, []);
 
   return (
