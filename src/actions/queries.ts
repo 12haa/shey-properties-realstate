@@ -25,3 +25,27 @@ export const AddQuery = async (query: any) => {
     };
   }
 };
+
+export const GetQueriesByPropertyId = async (propertyId: string) => {
+  try {
+    const queries = await prisma.query.findMany({
+      where: {
+        propertyId: propertyId,
+      },
+      include: {
+        user: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    return {
+      success: true,
+      data: queries,
+    };
+  } catch (err: any) {
+    return {
+      error: err.message,
+    };
+  }
+};

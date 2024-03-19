@@ -3,17 +3,24 @@ import React, { useState } from "react";
 import { Property } from "@prisma/client";
 import { Button, message, Table } from "antd";
 import { useRouter } from "next/navigation";
-import { trueTag } from "yaml/dist/schema/yaml-1.1/bool";
+
 import { DeleteProperty } from "@/actions/properties";
+import PropertyQueries from "@/app/(private)/user/properties/_components/property-queries";
 
 const ClientSidePropertiesTable = ({
   properties,
 }: {
   properties: Property[];
 }) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [showQueries, setShowQueries] = useState<boolean>(false);
+
+  const [selectedProperty, setSelectedProperty] = useState<Property | null>(
+    null,
+  );
   const router = useRouter();
-  // Property Delete Function
+  //log Property Delete Function
+  console.log(showQueries);
   const onDelete = async (id: string) => {
     try {
       setLoading(true);
@@ -39,7 +46,7 @@ const ClientSidePropertiesTable = ({
       dataIndex: "price",
       key: "price",
       render(price: number) {
-        return `$${price}`;
+        return `$ ${price}`;
       },
     },
     {
@@ -66,6 +73,15 @@ const ClientSidePropertiesTable = ({
       render(value: any, record: Property) {
         return (
           <div className="flex gap-5">
+            <Button
+              size="small"
+              onClick={() => {
+                setShowQueries(true);
+                setSelectedProperty(record);
+              }}
+            >
+              Queries
+            </Button>
             <Button size="small" onClick={() => onDelete(record.id)}>
               <i className="ri-delete-bin-line"></i>
             </Button>
@@ -92,6 +108,7 @@ const ClientSidePropertiesTable = ({
       },
     },
   ];
+
   return (
     <div className="capitalize">
       <Table
@@ -99,7 +116,14 @@ const ClientSidePropertiesTable = ({
         columns={columns}
         loading={loading}
         rowKey="id"
-      ></Table>
+      />
+      {setShowQueries ? (
+        <PropertyQueries
+          showQueriesModal={showQueries}
+          setShowQueriesModal={setShowQueries}
+          selectedProperty={selectedProperty}
+        />
+      ) : null}
     </div>
   );
 };

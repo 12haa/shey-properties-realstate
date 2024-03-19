@@ -1,6 +1,6 @@
 import React from "react";
 import { prisma } from "@/config/db";
-import ClientSidePropertiesTable from "@/app/(private)/user/properties/_components/properties-form/properties-table-clientside";
+import ClientSidePropertiesTable from "@/app/(private)/user/properties/_components/properties-table-clientside";
 import { GetCurrentUserFromMongoDb } from "@/actions/users";
 
 const PropertiesTable = async () => {
