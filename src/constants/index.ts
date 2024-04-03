@@ -110,3 +110,20 @@ export const facingTypes = [
     label: "South",
   },
 ];
+
+export const subscriptionPlans = [
+  {
+    name: "Basic",
+    price: 0,
+    propertiesLimit: 3,
+    imagesPerProperty: 3,
+    features: [
+      "Property Listing , ",
+      "Property Details",
+      "3 Images per property",
+      "3 Properties Limit",
+      "Property Search",
+         02 49
+    ],
+  },
+];
