@@ -123,7 +123,43 @@ export const subscriptionPlans = [
       "3 Images per property",
       "3 Properties Limit",
       "Property Search",
-         02 49
+    ],
+  },
+  {
+    name: "Standard",
+    price: 10,
+    propertiesLimit: 10,
+    imagesPerProperty: 5,
+    features: [
+      "Property Listing , ",
+      "Property Details",
+      "5 Images per property",
+      "5 Properties Limit",
+      "Property Search",
+    ],
+  },
+  {
+    name: "Premium",
+    price: 20,
+    propertiesLimit: 20,
+    imagesPerProperty: 10,
+    features: [
+      "Property Listing , ",
+      "Property Details",
+      "10 Images per property",
+      "10 Properties Limit",
+      "Property Search",
     ],
   },
 ];
+
+// export const propertyTypes = [
+//   {
+//     value: "apartment",
+//     label: "Apartment",
+//   },
+//   {
+//     value: "villa",
+//     label: "Villa",
+//   },
+// ];
