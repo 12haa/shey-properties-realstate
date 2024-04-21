@@ -13,6 +13,14 @@ const Account = async () => {
       userId: mongoUser?.id,
     },
   });
+  // Get User Subscription Data
+  const UserSubscriptionPlan = await prisma.subscription.findFirst({
+    where: {
+      userId: mongoUser?.id,
+    },
+  });
+  console.log(UserSubscriptionPlan, "User Subscription Plan");
+
   const getSectionTitle = (title: string) => {
     return (
       <div>

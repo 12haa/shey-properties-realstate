@@ -6,6 +6,8 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
+import { useRouter } from "next/navigation";
+import { SaveSubscription } from "@/actions/subscriptions";
 
 interface Props {
   plan: any;
@@ -21,6 +23,7 @@ const CheckoutForm = ({
   const [loading, setLoading] = useState<boolean>(false);
   const stripe = useStripe();
   const elements = useElements();
+  const router = useRouter();
 
   // Stripe Handle Submit Event
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -46,10 +49,11 @@ const CheckoutForm = ({
           error: result.error.message,
         };
       } else {
-        // Your customer will be redirected to your `return_url`. For some payment
-        // methods like iDEAL, your customer will be redirected to an intermediate
-        // site first to authorize the payment, then redirected to the `return_url`.
         message.success("Payment Successful!");
+        await SaveSubscription({ paymentId: result.paymentIntent.id, plan });
+        message.success("Subscription purchased Successfully!");
+
+        router.push("/user/subscriptions");
       }
       setShowCheckoutForm(false);
     } catch (err: any) {
