@@ -1,12 +1,13 @@
 import React from "react";
-import { currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import { GetCurrentUserFromMongoDb } from "@/actions/users";
 import PageTitle from "@/components/page-title";
 import { prisma } from "@/config/db";
+import { subscriptionPlans } from "@/constants";
 
 const Account = async () => {
   const clerkUser = await currentUser();
-  console.log(clerkUser, "Clerk Account");
+  console.log(clerkUser, "clerk user");
   const mongoUser = (await GetCurrentUserFromMongoDb()).data;
   const propertiesCount = await prisma.property.count({
     where: {
@@ -14,12 +15,17 @@ const Account = async () => {
     },
   });
   // Get User Subscription Data
-  const UserSubscriptionPlan = await prisma.subscription.findFirst({
+  const userSubscriptionPlan: any = await prisma.subscription.findFirst({
     where: {
       userId: mongoUser?.id,
     },
+
+    orderBy: {
+      createdAt: "desc",
+    },
   });
-  console.log(UserSubscriptionPlan, "User Subscription Plan");
+
+  console.log(userSubscriptionPlan, "User Subscription Plan");
 
   const getSectionTitle = (title: string) => {
     return (
@@ -58,7 +64,14 @@ const Account = async () => {
       </div>
       <div className="flex flex-col gap-5 mt-10">
         {getSectionTitle("Subscription Details")}
-        <span> </span>
+        <div className="grid grid-cols-3 gap-5 ">
+          {getAttribute("Plan", userSubscriptionPlan.plan.name || "")}
+          {getAttribute("Price", userSubscriptionPlan.plan.price.toString())}
+          {getAttribute(
+            "Properties Limit",
+            userSubscriptionPlan.plan.propertiesLimit.toString(),
+          )}
+        </div>
       </div>
     </div>
   );

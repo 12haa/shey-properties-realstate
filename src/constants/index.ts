@@ -125,6 +125,7 @@ export const subscriptionPlans = [
       "Property Search",
     ],
   },
+
   {
     name: "Standard",
     price: 10,
