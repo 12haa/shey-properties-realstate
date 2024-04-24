@@ -1,16 +1,26 @@
 import React from "react";
 import PageTitle from "@/components/page-title";
 import { subscriptionPlans } from "@/constants";
-import { Button } from "antd";
 import BuySubscription from "@/app/(private)/user/subscriptions/_components/buy-subscription";
+import { prisma } from "@/config/db";
+import { GetCurrentUserFromMongoDb } from "@/actions/users";
 
-const SubscriptionsPage = () => {
+const SubscriptionsPage = async () => {
+  const mongoUser = (await GetCurrentUserFromMongoDb()).data;
+  const userSubscription: any = await prisma.subscription.findFirst({
+    where: {
+      userId: mongoUser?.id,
+    },
+    orderBy: { createdAt: "desc" },
+  });
   return (
     <div>
       <PageTitle title="Subscriptions" />
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
         {subscriptionPlans.map((plan) => {
-          const isSelected = plan.name === "Basic";
+          let isSelected = userSubscription?.plan?.name === plan.name;
+          if (!userSubscription) isSelected = plan.name === "Basic";
+
           return (
             <div
               className={`flex flex-col gap-5 justify-between p-5 border rounded  border-solid
