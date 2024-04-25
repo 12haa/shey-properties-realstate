@@ -36,11 +36,12 @@ model Subscription {
 
 // Property Model
 model Property {
-  id               String   @id @default(cuid()) @map("_id")
-  userId           String
-  user             User     @relation(fields: [userId], references: [id])
-  name             String
-  description      String
+  id          String @id @default(cuid()) @map("_id")
+  userId      String
+  user        User   @relation(fields: [userId], references: [id])
+  name        String
+  description String
+
   type             String
   status           String
   price            Float

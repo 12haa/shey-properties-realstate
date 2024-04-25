@@ -24,9 +24,7 @@ const Filters = ({ searchParams }: { searchParams: any }) => {
       }
     });
     const queryString = new URLSearchParams(formattedData).toString();
-    console.log(formattedData, "im formatted data");
-    console.log(queryString, "im query string");
-    console.log(pathname, "im pathname");
+
     //   Redirect
     router.push(`${pathname}?${queryString}`);
     setShowFiltersModal(false);
@@ -36,7 +34,21 @@ const Filters = ({ searchParams }: { searchParams: any }) => {
     <>
       <div className=" flex justify-between p-5  border rounded-sm border-solid border-gray-300 mb-5 items-center">
         <div className="flex gap-4">
-          <span className="text-sm text-gray-600">No Filters Applied</span>
+          {Object.keys(searchParams).length === 0 ? (
+            <span className="text-gray-500 text-sm">No Filters Applied.</span>
+          ) : (
+            <div className="flex flex-wrap gap-5">
+              {Object.keys(searchParams).map((key) => (
+                //   Also Could Use Tag Component from antd
+                <div className="flex justify-center items-center gap-2">
+                  <span>Filters :</span>
+                  <div className="flex gap-2 p-2 bg-gray-100 rounded-lg border border-dashed">
+                    <p>{searchParams[key]}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
         {/*Right Side*/}
         <div className="flex gap-5 ">

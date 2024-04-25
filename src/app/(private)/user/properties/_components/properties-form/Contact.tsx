@@ -15,10 +15,12 @@ const Contact = ({
   isEdit = false,
 }: PropertiesFormStepProps) => {
   const { id }: any = useParams();
+  console.log(id, "id");
+
   const onFinish = async (values: any) => {
     try {
       const tempFinalValues = { ...finalValues, contact: values };
-
+      console.log(finalValues, "final values");
       // Handling Media Upload
       const tempMedia = tempFinalValues.media;
       const newImagesUrls = await UploadFilesToFireBaseAndReturnURLs(
@@ -28,7 +30,6 @@ const Contact = ({
       tempFinalValues.medaia = tempMedia;
       const valuesAsPerDb = {
         ...tempFinalValues.basic,
-
         ...tempFinalValues.location,
         ...tempFinalValues.contact,
         ...tempFinalValues.amenities,
@@ -36,7 +37,10 @@ const Contact = ({
       };
       let response = null;
       if (isEdit) {
+        console.log(response, "response 1");
+
         response = await EditProperty(valuesAsPerDb, id);
+        console.log(response, "response 2");
       } else {
         response = await AddProperty(valuesAsPerDb);
       }
@@ -44,6 +48,7 @@ const Contact = ({
       message.success(response.data.message);
       router.push("/user/properties");
     } catch (err: any) {
+      console.log(err, "im ERRRRRRORORORO");
       throw new Error(err.message);
     }
   };

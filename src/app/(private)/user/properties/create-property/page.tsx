@@ -7,7 +7,7 @@ import { GetCurrentUserFromMongoDb } from "@/actions/users";
 
 const CreatePropertyPage = async ({ searchParams }: { searchParams: any }) => {
   // Handle search params here if needed
-  const mongoUser = await GetCurrentUserFromMongoDb();
+  const mongoUser = (await GetCurrentUserFromMongoDb()).data;
   const cloneFrom = searchParams?.cloneFrom || "";
   let property: Property | null = null;
   if (cloneFrom) {
@@ -19,24 +19,16 @@ const CreatePropertyPage = async ({ searchParams }: { searchParams: any }) => {
   }
   // Cher User Subscription and properties count
   const [userSubscription, propertiesCount] = (await Promise.all([
-    prisma.subscription.findFirst({ where: { userId: mongoUser?.data?.id } }),
+    prisma.subscription.findFirst({ where: { userId: mongoUser?.id } }),
     prisma.property.count({
       where: {
-        userId: mongoUser?.data?.id,
+        userId: mongoUser?.id,
       },
       orderBy: {
         createdAt: "desc",
       },
     }),
-  ])
-    .then((results) => {
-      console.log(results);
-    })
-    .catch((err: any) => {
-      return {
-        message: err.message && " Something went Wrong",
-      };
-    })) as any;
+  ])) as any;
 
   let showForm = true;
   let ErrorMessage = "";
