@@ -3,9 +3,11 @@ import PageTitle from "@/components/page-title";
 import PropertiesForm from "@/app/(private)/user/properties/_components/properties-form/page";
 import { prisma } from "@/config/db";
 import { Property } from "@prisma/client";
+import { GetCurrentUserFromMongoDb } from "@/actions/users";
 
 const CreatePropertyPage = async ({ searchParams }: { searchParams: any }) => {
   // Handle search params here if needed
+  const mongoUser = await GetCurrentUserFromMongoDb();
   const cloneFrom = searchParams?.cloneFrom || "";
   let property: Property | null = null;
   if (cloneFrom) {
@@ -15,10 +17,49 @@ const CreatePropertyPage = async ({ searchParams }: { searchParams: any }) => {
       },
     })) as Property;
   }
+  // Cher User Subscription and properties count
+  const [userSubscription, propertiesCount] = (await Promise.all([
+    prisma.subscription.findFirst({ where: { userId: mongoUser?.data?.id } }),
+    prisma.property.count({
+      where: {
+        userId: mongoUser?.data?.id,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    }),
+  ])
+    .then((results) => {
+      console.log(results);
+    })
+    .catch((err: any) => {
+      return {
+        message: err.message && " Something went Wrong",
+      };
+    })) as any;
+
+  let showForm = true;
+  let ErrorMessage = "";
+
+  if (!userSubscription && propertiesCount >= 3) {
+    showForm = false;
+    ErrorMessage =
+      "You have reached the maximum number of properties allowed , please upgrade your plan to create more properties";
+  }
+  if (userSubscription?.plan?.propertiesCount > propertiesCount) {
+    showForm = false;
+    ErrorMessage =
+      "You have reached the maximum number of properties allowed , please upgrade your plan to create more properties";
+  }
+
   return (
     <div>
       <PageTitle title="Create Property" />
-      <PropertiesForm initialValues={property ? property : {}} />
+      {showForm ? (
+        <PropertiesForm initialValues={property ? property : {}} />
+      ) : (
+        <div className="text-center">{ErrorMessage}</div>
+      )}
     </div>
   );
 };

@@ -287,6 +287,37 @@
           </messages>
           <updatedAt value="2024-04-18T08:59:05.4402309" />
         </chat>
+        <chat>
+          <accountId value="VXNlcjoxNzAzNDM=" />
+          <internalId value="28bb65b7-49a9-429f-8ba4-f6e7cfb3e5aa" />
+          <messages>
+            <list>
+              <message>
+                <speaker value="HUMAN" />
+                <text value="hi" />
+              </message>
+              <message>
+                <speaker value="ASSISTANT" />
+              </message>
+              <message>
+                <speaker value="HUMAN" />
+                <text value="sdad" />
+              </message>
+              <message>
+                <speaker value="ASSISTANT" />
+              </message>
+            </list>
+          </messages>
+          <updatedAt value="2024-04-24T18:46:40.4890884" />
+        </chat>
+        <chat>
+          <accountId value="VXNlcjoxNzAzNDM=" />
+          <internalId value="c126050d-4fa3-4f30-aaca-41443cea38bd" />
+        </chat>
+        <chat>
+          <accountId value="VXNlcjoxNzAzNDM=" />
+          <internalId value="b452d85c-ee33-4808-914a-3778c1dfd484" />
+        </chat>
       </list>
     </chats>
   </component>
