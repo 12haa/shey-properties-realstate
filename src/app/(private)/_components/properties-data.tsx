@@ -4,8 +4,9 @@ import { Property } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 
-const PropertiesData = async () => {
+const PropertiesData = async ({ searchParams }: { searchParams: any }) => {
   const properties: Property[] = await prisma.property.findMany({
+    where: searchParams,
     orderBy: {
       updatedAt: "desc",
     },

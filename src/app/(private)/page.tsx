@@ -5,14 +5,16 @@ import { Suspense } from "react";
 import Loader from "@/components/Loader";
 import PropertiesData from "@/app/(private)/_components/properties-data";
 
-export default async function Home() {
+export default async function Home({ searchParams }: { searchParams: any }) {
+  const key = JSON.stringify(searchParams);
+  console.log(key, "imKey From home");
   await GetCurrentUserFromMongoDb();
 
   return (
     <div className="  ">
-      <Filters />
-      <Suspense fallback={<Loader />}>
-        <PropertiesData />
+      <Filters searchParams={searchParams} />
+      <Suspense fallback={<Loader />} key={key}>
+        <PropertiesData searchParams={searchParams} />
       </Suspense>
     </div>
   );

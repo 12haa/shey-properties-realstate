@@ -7,13 +7,29 @@ import {
   propertyStatus,
   propertyTypes,
 } from "@/constants";
+import { usePathname, useRouter } from "next/navigation";
 import { log } from "node:util";
 
-const Filters = () => {
+const Filters = ({ searchParams }: { searchParams: any }) => {
+  const router = useRouter();
+  const pathname = usePathname();
   const [showFiltersModal, setShowFiltersModal] = useState(false);
   // Form onFinish Handler
   const onFinish = (values: any) => {
-    console.log("Success:", values);
+    //   Remove Empty Values
+    const formattedData: any = {};
+    Object.keys(values).forEach((key) => {
+      if (values[key]) {
+        formattedData[key] = values[key];
+      }
+    });
+    const queryString = new URLSearchParams(formattedData).toString();
+    console.log(formattedData, "im formatted data");
+    console.log(queryString, "im query string");
+    console.log(pathname, "im pathname");
+    //   Redirect
+    router.push(`${pathname}?${queryString}`);
+    setShowFiltersModal(false);
   };
 
   return (
@@ -24,7 +40,7 @@ const Filters = () => {
         </div>
         {/*Right Side*/}
         <div className="flex gap-5 ">
-          <Button className="">Clear</Button>
+          <Button onClick={() => router.push(pathname)}>Clear</Button>
           <Button
             type="primary"
             className=""
@@ -50,7 +66,11 @@ const Filters = () => {
           width={800}
           footer={null}
         >
-          <Form onFinish={onFinish} layout="vertical">
+          <Form
+            onFinish={onFinish}
+            layout="vertical"
+            initialValues={searchParams}
+          >
             {/* Form Items */}
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
               <Form.Item label="PropertyType" name="type">
@@ -70,7 +90,7 @@ const Filters = () => {
               <Form.Item label="Furnishing" name="furnishing">
                 <Select options={furnishingTypes} />
               </Form.Item>
-              <Form.Item label="Parking" name="Parking">
+              <Form.Item label="Parking" name="parking">
                 <Select options={parkingTypes} />
               </Form.Item>
             </div>
