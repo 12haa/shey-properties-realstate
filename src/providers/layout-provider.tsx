@@ -65,7 +65,8 @@ const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
           <div className="bg-white py-2 px-5 rounded-sm flex items-center gap-5">
             <Dropdown
               menu={{
-                items: menuToShow.map((item: any) => ({
+                items: menuToShow.map((item: any, index) => ({
+                  key: index.toString(),
                   label: item.name,
                   onClick: () => {
                     router.push(item.path);
