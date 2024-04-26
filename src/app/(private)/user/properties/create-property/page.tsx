@@ -48,7 +48,7 @@ const CreatePropertyPage = async ({ searchParams }: { searchParams: any }) => {
     <div>
       <PageTitle title="Create Property" />
       {showForm ? (
-        <PropertiesForm initialValues={property ? property : {}} />
+        <PropertiesForm initialValues={property ? property : {}} isEdit />
       ) : (
         <div className="text-center">{ErrorMessage}</div>
       )}
