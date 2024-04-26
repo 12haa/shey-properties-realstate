@@ -15,7 +15,7 @@ const userMenu = [
   },
   {
     name: "Properties",
-    path: "/user/properties.tsx",
+    path: "/user/properties",
   },
   {
     name: "Account",
