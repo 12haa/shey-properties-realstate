@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { UserButton } from "@clerk/nextjs";
 import { GetCurrentUserFromMongoDb } from "@/actions/users";
-import { User } from "@clerk/backend";
+import { User } from "@prisma/client";
 import { usePathname } from "next/navigation";
 import Loader from "@/components/Loader";
 import { Button, Dropdown } from "antd";
@@ -15,7 +15,7 @@ const userMenu = [
   },
   {
     name: "Properties",
-    path: "/user/properties",
+    path: "/user/properties.tsx",
   },
   {
     name: "Account",
@@ -40,12 +40,8 @@ const adminMenu = [
     path: "/admin/properties",
   },
   {
-    name: "Account",
-    path: "/admin/account",
-  },
-  {
-    name: "Subscriptions",
-    path: "/admin/subscriptions",
+    name: "Users",
+    path: "/admin/users",
   },
 ];
 const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
@@ -57,6 +53,7 @@ const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
   const isPublicRoute = ["/sign-in", "/sign-up"].includes(
     pathname.split("/")[1],
   );
+  const isAdminRoute = pathname.split("/")[1] === "admin";
   const router = useRouter();
 
   const getHeader = () => {
@@ -89,6 +86,12 @@ const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
   const getContent = () => {
     if (isPublicRoute) return children;
     if (loading) return <Loader />;
+    if (isAdminRoute && !currentUser?.isAdmin)
+      return (
+        <div className="py-5 lg:px-20 px-5 text-center text-gray-500 font-semibold">
+          You are no authorized to view this page
+        </div>
+      );
     return <div className="py-5 lg:px-20 px-5">{children}</div>;
   };
   const getCurrentUser = async () => {

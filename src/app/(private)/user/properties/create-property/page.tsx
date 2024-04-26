@@ -17,7 +17,7 @@ const CreatePropertyPage = async ({ searchParams }: { searchParams: any }) => {
       },
     })) as Property;
   }
-  // Cher User Subscription and properties count
+  // Cher User Subscription and properties.tsx count
   const [userSubscription, propertiesCount] = (await Promise.all([
     prisma.subscription.findFirst({ where: { userId: mongoUser?.id } }),
     prisma.property.count({
@@ -36,12 +36,12 @@ const CreatePropertyPage = async ({ searchParams }: { searchParams: any }) => {
   if (!userSubscription && propertiesCount >= 3) {
     showForm = false;
     ErrorMessage =
-      "You have reached the maximum number of properties allowed , please upgrade your plan to create more properties";
+      "You have reached the maximum number of properties.tsx allowed , please upgrade your plan to create more properties.tsx";
   }
   if (userSubscription?.plan?.propertiesCount > propertiesCount) {
     showForm = false;
     ErrorMessage =
-      "You have reached the maximum number of properties allowed , please upgrade your plan to create more properties";
+      "You have reached the maximum number of properties.tsx allowed , please upgrade your plan to create more properties.tsx";
   }
 
   return (

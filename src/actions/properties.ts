@@ -18,7 +18,7 @@ export const AddProperty = async (property: any) => {
     });
 
     console.log(property, "im property from actions file");
-    revalidatePath("/user/properties");
+    revalidatePath("/user/properties.tsx");
     return {
       data: property,
       message: "Property Added successfully",
@@ -39,7 +39,7 @@ export const EditProperty = async (property: any, id: string) => {
       data: property,
     });
 
-    revalidatePath("/user/properties");
+    revalidatePath("/user/properties.tsx");
     return {
       data: property,
       message: "Property Edited successfully",
@@ -58,7 +58,7 @@ export const DeleteProperty = async (id: string) => {
         id: id,
       },
     });
-    revalidatePath("/user/properties");
+    revalidatePath("/user/properties.tsx");
     return {
       message: "Property Deleted successfully",
     };
