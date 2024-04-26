@@ -11,7 +11,7 @@ export default async function Home({ searchParams }: { searchParams: any }) {
   await GetCurrentUserFromMongoDb();
 
   return (
-    <div className="  ">
+    <div className="   ">
       <Filters searchParams={searchParams} />
       <Suspense fallback={<Loader />} key={key}>
         <PropertiesData searchParams={searchParams} />

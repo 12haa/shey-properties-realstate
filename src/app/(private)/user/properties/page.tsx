@@ -5,7 +5,8 @@ import LinkButton from "@/components/link-button";
 import Filters from "@/components/Filters";
 import Loader from "@/components/Loader";
 
-const Properties = () => {
+const Properties = ({ searchParams }: { searchParams: any }) => {
+  const key = JSON.stringify(searchParams);
   return (
     <div>
       <div className="flex justify-between items-center">
@@ -15,15 +16,16 @@ const Properties = () => {
           path="/user/properties/create-property"
         />
       </div>
-      <Filters />
+      <Filters searchParams={searchParams} />
       <Suspense
+        key={key}
         fallback={
           <div>
             <Loader />
           </div>
         }
       >
-        <PropertiesTable />
+        <PropertiesTable searchParams={searchParams} />
       </Suspense>
     </div>
   );

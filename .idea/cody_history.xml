@@ -322,6 +322,29 @@
           <accountId value="VXNlcjoxNzAzNDM=" />
           <internalId value="d853fc2d-ae66-49df-9962-04831a7d6211" />
         </chat>
+        <chat>
+          <accountId value="VXNlcjoxNzAzNDM=" />
+          <internalId value="39ea1335-228f-4cca-b64b-b41f51158ef1" />
+          <messages>
+            <list>
+              <message>
+                <speaker value="HUMAN" />
+                <text value="hi" />
+              </message>
+              <message>
+                <speaker value="ASSISTANT" />
+              </message>
+              <message>
+                <speaker value="HUMAN" />
+                <text value="hello cody" />
+              </message>
+              <message>
+                <speaker value="ASSISTANT" />
+              </message>
+            </list>
+          </messages>
+          <updatedAt value="2024-04-26T07:37:02.8966263" />
+        </chat>
       </list>
     </chats>
   </component>

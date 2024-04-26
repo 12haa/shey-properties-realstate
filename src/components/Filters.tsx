@@ -32,7 +32,7 @@ const Filters = ({ searchParams }: { searchParams: any }) => {
 
   return (
     <>
-      <div className=" flex justify-between p-5  border rounded-sm border-solid border-gray-300 mb-5 items-center">
+      <div className=" flex justify-between p-5  border rounded-sm border-solid border-gray-300 mb-5 items-center mt-3">
         <div className="flex gap-4">
           {Object.keys(searchParams).length === 0 ? (
             <span className="text-gray-500 text-sm">No Filters Applied.</span>
