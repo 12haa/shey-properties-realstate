@@ -34,12 +34,12 @@ export const EditProperty = async (property: any, id: string) => {
   try {
     await prisma.property.update({
       where: {
-        id: id,
+        id,
       },
       data: property,
     });
 
-    revalidatePath("/user/properties.tsx");
+    revalidatePath("/user/properties");
     return {
       data: property,
       message: "Property Edited successfully",
@@ -58,7 +58,7 @@ export const DeleteProperty = async (id: string) => {
         id: id,
       },
     });
-    revalidatePath("/user/properties.tsx");
+    revalidatePath("/user/properties");
     return {
       message: "Property Deleted successfully",
     };

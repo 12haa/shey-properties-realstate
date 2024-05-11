@@ -15,7 +15,7 @@ const Contact = ({
   isEdit = false,
 }: PropertiesFormStepProps) => {
   const { id }: any = useParams();
-  console.log(id, "id");
+  // console.log(id, "id");
 
   const onFinish = async (values: any) => {
     try {
@@ -33,12 +33,12 @@ const Contact = ({
         ...tempFinalValues.location,
         ...tempFinalValues.contact,
         ...tempFinalValues.amenities,
+
         images: tempFinalValues.media.images,
       };
       let response = null;
-      if (isEdit) {
+      if (!isEdit) {
         console.log(response, "response 1");
-
         response = await EditProperty(valuesAsPerDb, id);
         console.log(response, "response 2");
       } else {
